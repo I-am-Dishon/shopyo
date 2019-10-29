@@ -18,3 +18,4 @@ def add_setting(name, value):
 add_setting('OUR_APP_NAME', OUR_APP_NAME)
 add_setting('SECTION_NAME', SECTION_NAME)
 add_setting('SECTION_ITEMS', SECTION_ITEMS)
+add_setting('TODO_ITEMS', TODO_ITEMS)

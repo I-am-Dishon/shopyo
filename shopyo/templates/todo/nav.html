@@ -1,0 +1,13 @@
+{% if active_page != 'todo' %}
+<li class="nav-item">
+    <a class="nav-link" href="/todo" title="Todo"><i class="fas fa-th-list"></i></i></a>
+</li>
+
+{% else %}
+
+<li class="nav-item">
+    <a class="nav-link" href="/todo/add" title="Add Todo"><i
+                            class="fas fa-plus-circle"></i></a>
+</li>
+
+{% endif %}

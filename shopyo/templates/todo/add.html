@@ -1,0 +1,53 @@
+{% extends "base/main_base.html" %}
+
+{% set active_page = "todo" %}
+
+{% block pagehead %}
+    <title>add todo</title>
+{% endblock %}
+
+{% block content %}
+
+    <h2>Add Todo</h2>
+
+    <form action="/todo/add" method="post">
+
+        <label>Add Todo</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-user-friends"></i></span>
+            </div>
+            <input required autocomplete="off" id="name" type="text" class="form-control" name="name"
+                   placeholder="Name">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-calendar-day"></i></span>
+            </div>
+            <input required autocomplete="off" id="body" type="body" class="form-control" name="body"
+                   placeholder="Description">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-calendar-day"></i></span>
+            </div>
+            <input required autocomplete="off" id="date" type="date" class="form-control" name="date"
+                   placeholder="">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-clock"></i></span>
+            </div>
+            <input required autocomplete="off" id="time" type="time" class="form-control" name="time"
+                   placeholder="">
+        </div>
+        <div class="input-group mb-3">
+            <input required autocomplete="off" id="active" type="hidden" class="form-control" name="active" value="active"
+                   placeholder="Active">
+        </div>
+        <div class="input-group mb-3">
+             <input required type="submit" class="btn btn-info" value="add">
+        </div>
+
+    </form>
+{% endblock %}

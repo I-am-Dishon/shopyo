@@ -7,4 +7,4 @@ def get_value(name):
 OUR_APP_NAME = 'Demo'
 SECTION_NAME = 'Manufacturer'
 SECTION_ITEMS = 'Products'
-
+TODO_ITEMS = 'Todo'

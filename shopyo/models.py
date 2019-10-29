@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -47,3 +48,12 @@ class Patients(db.Model):
     last_name = db.Column(db.String(100))
 
 # db.DateTime, default=db.func.current_timestamp()
+
+class Todo(db.Model):
+    __tablename__ = 'todo'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))  #to be removed
+    body = db.Column(db.String(100))
+    Time = db.Column(db.String(20))
+    active = db.Column(db.String(20))
+    date = db.Column(db.String(20))

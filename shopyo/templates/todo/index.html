@@ -1,0 +1,106 @@
+{% extends "base/main_base.html" %}
+
+{% set active_page = "todo" %}
+
+{% block pagehead %}
+    <title>Settings</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: inline-block;
+        }
+
+        .active {
+            width: 6rem;
+            color: white;
+            background-color: #34ce57;
+        }
+
+        .inactive {
+            width: 6rem;
+            color: white;
+            background-color: #ff253a;
+        }
+
+        .all_inactive {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <script type="text/javascript">
+        $(function () {
+            $('.delete_me').click(function () {
+                var id = $(this).attr('name');
+                var ask = confirm("Do you want to delete ?");
+                if (ask == true) {
+                    window.location.replace("/todo/delete/" + id, "_self");
+                    return false;
+                } else {
+
+                }
+            });
+            $('#isActive').change(function () {
+
+                if ($('#isActive').is(':checked')) {
+                    $('.all_not').addClass('all_inactive');
+                } else {
+                    $('.all_not').removeClass('all_inactive');
+                }
+
+            });
+        });
+
+
+    </script>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Meeting Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col"><label style="margin-bottom: auto">Only active&nbsp&nbsp&nbsp<input name="activeBox"
+                                                                                                id="isActive"
+                                                                                                type="checkbox"/></label>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in todo %}
+            <tr class="{% if t.active == "inactive" %}all_not{% endif %}">
+                <td>{{ t.name }}</td>
+                <td>{{ t.date }}</td>
+                <td>{{ t.time }}</td>
+                <!--<td><a href="/settings/edit/{{appointment.name}}" class="btn btn-info" role="button"><i class="fas fa-pencil-alt"></i></a></td>-->
+                <td>
+                    <div style='display: inline-block; '>
+                        <a style="text-decoration: none;">
+                            <button id='delete' class="delete_me btn btn-dark" type="" name="{{ t.id }}"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </a>
+                        &nbsp;
+                        <a href="/todo/edit/{{ t.id }}" style="text-decoration: none;">
+                            <button data-name="{{ t.name }}" class="btn btn-primary"><i id='ico'
+                                                                                                  class="fas fa-pencil-alt"></i>
+                            </button>
+                        </a>
+                        <a href="/todo/{% if todo.active == "active" %}inactive{% else %}active{% endif %}/{{ todo.id }}"
+                           style="text-decoration: none; padding-left: 1rem">
+                            <button id="active-btn" data-name="{{ todo.name }}"
+                                    class="btn {% if todo.active == "active" %}active{% else %}inactive{% endif %}">{{ todo.active }}
+                            </button>
+                        </a>
+
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
